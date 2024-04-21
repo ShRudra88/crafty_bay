@@ -1,15 +1,17 @@
+import 'package:crafty_bay/presentation/ui/screens/auth/varify_otp_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import '../widgets/app_logo.dart';
+import '../../widgets/app_logo.dart';
 
-class VerifiEmailScreen extends StatefulWidget {
-  const VerifiEmailScreen({super.key});
+class VerifyEmailScreen extends StatefulWidget {
+  const VerifyEmailScreen({super.key});
 
   @override
-  State<VerifiEmailScreen> createState() => _VerifiEmailScreenState();
+  State<VerifyEmailScreen> createState() => _VerifyEmailScreenState();
 }
 
-class _VerifiEmailScreenState extends State<VerifiEmailScreen> {
+class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,9 @@ class _VerifiEmailScreenState extends State<VerifiEmailScreen> {
               const SizedBox(height: 24,),
               SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: (){}, child: Text('Next'),))
+                  child: ElevatedButton(onPressed: (){
+                    Get.to(const VerifyOtpScreen());
+                  }, child: const Text('Next'),))
             ],
           ),
         ),
