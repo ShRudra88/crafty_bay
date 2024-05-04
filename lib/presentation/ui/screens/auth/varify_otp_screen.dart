@@ -18,7 +18,7 @@ class VerifyOtpScreen extends StatefulWidget {
 
 class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
   late Timer _timer;
-  int _countdown = 10;
+  int _countdown = 60;
 
   @override
   void initState() {
