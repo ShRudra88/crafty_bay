@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
-    super.key, required this.title, required this.onTapSeeAll,
-  });
+    Key? key,
+    required this.title,
+    required this.onTapSeeAll,
+  }) : super(key: key);
 
   final String title;
   final VoidCallback onTapSeeAll;
@@ -13,11 +15,17 @@ class SectionTitle extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text('All Categories', style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-        ),),
-        TextButton(onPressed: (){}, child: const Text('See All'))
+        Text(
+          title, // Use the title passed to the widget
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        TextButton(
+          onPressed: onTapSeeAll,
+          child: const Text('See All'),
+        )
       ],
     );
   }
