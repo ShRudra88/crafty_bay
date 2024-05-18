@@ -1,10 +1,24 @@
-import 'package:crafty_bay/presentation/ui/utility/app_colors.dart';
-import 'package:crafty_bay/presentation/ui/utility/assets_path.dart';
-import 'package:crafty_bay/presentation/ui/widgets/category_item.dart';
+import 'package:e_commerce_flutter_crafty_bay/data/models/category_list_item.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/auth_controller.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/category_controller.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/home_banner_controller.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/main_bottom_nav_contoller.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/popular_product_controller.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/ui/screens/auth/verify_email_screen.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/ui/screens/product_list_screen.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/ui/utility/assets_path.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/ui/widget/center_circular_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import '../widgets/home/bannar_carousel.dart';
-import '../widgets/home/circle_icon_button.dart';
-import '../widgets/home/section_title_widget.dart';
+import 'package:get/get.dart';
+import '../../../data/models/product_model.dart';
+import '../../state_holders/new_product_controller.dart';
+import '../../state_holders/special_product_controller.dart';
+import '../widget/category_item.dart';
+import '../widget/home/circle_icon_button.dart';
+
+import '../widget/home/banner_carousel.dart';
+import '../widget/home/section_title.dart';
+import '../widget/product_card_item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,61 +27,139 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 8,
-            ),
-            SearchTextField,
-            const SizedBox(
-              height: 16,
-            ),
-            const BannerCarousel(),
-            SectionTitle(
-              title: 'All Categories',
-              onTapSeeAll: () {},
-            ),
-            CategoryList,
-            SectionTitle(
-              title: 'Popular',
-              onTapSeeAll: () {},
-            ),
-            ProductList,
-            SectionTitle(
-              title: 'Special',
-              onTapSeeAll: () {},
-            ),
-            ProductList,
-            SectionTitle(
-              title: 'New',
-              onTapSeeAll: () {},
-            ),
-            ProductList,
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              const SizedBox(height: 8,),
+              searchTextField,
+              const SizedBox(height: 16,),
+              SizedBox(
+                height: 210,
+                child: GetBuilder<HomeBannerController>(
+                    builder: (homeBannerController) {
+                      return Visibility(
+                        visible: homeBannerController.inProgress == false,
+                        replacement: const CenterCircularProgressIndicator(),
+                        child: BannerCarousel(
+                          bannerList:
+                          homeBannerController.bannerListModel.bannerList ?? [],
+                        ),
+                      );
+                    }),
+              ),
+              const SizedBox(height: 16,),
+              SectionTitle(
+                title: 'All Categories',
+                onTapSeeAll: () {
+                  Get.find<MainBottomNavController>().changeIndex(1);
+                },
+              ),
+              categoryList,
+              SectionTitle(
+                title: 'Popular',
+                onTapSeeAll: () {
+                  Get.to(() => const ProductListScreen());
+                },
+              ),
+              GetBuilder<PopularProductController>(
+                  builder: (popularProductController) {
+                    return Visibility(
+                      visible: popularProductController.inProgress == false,
+                      replacement: const CenterCircularProgressIndicator(),
+                      child: productList(
+                          popularProductController.productListModel.productList ??
+                              []),
+                    );
+                  }),
+              const SizedBox(height: 8,),
+              SectionTitle(
+                title: 'Special',
+                onTapSeeAll: () {},
+              ),
+              GetBuilder<SpecialProductController>(
+                  builder: (specialProductController) {
+                    return Visibility(
+                      visible: specialProductController.inProgress == false,
+                      replacement: const CenterCircularProgressIndicator(),
+                      child: productList(
+                          specialProductController.productListModel.productList ??
+                              []),
+                    );
+                  }),
+              const SizedBox(
+                height: 8,
+              ),
+              SectionTitle(
+                title: 'New',
+                onTapSeeAll: () {},
+              ),
+              GetBuilder<NewProductController>(builder: (newProductController) {
+                return Visibility(
+                  visible: newProductController.inProgress == false,
+                  replacement: const CenterCircularProgressIndicator(),
+                  child: productList(
+                      newProductController.productListModel.productList ?? []),
+                );
+              }),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  SizedBox get CategoryList {
+  SizedBox get categoryList {
     return SizedBox(
       height: 130,
+      child: GetBuilder<CategoryController>(
+          builder: (categoryController) {
+            return Visibility(
+              visible: categoryController.inProgress == false,
+              replacement: const CenterCircularProgressIndicator(),
+              child: ListView.separated(
+                itemCount: categoryController.categoryListModel.categoryListItem?.length ?? 0,
+                primary: false,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return CategoryItem(categoryListItem: categoryController.categoryListModel.categoryListItem![index]);
+
+                },
+                separatorBuilder: (_, __) {
+                  return const SizedBox(
+                    width: 8,
+                  );
+                },
+              ),
+            );
+          }
+      ),
+    );
+  }
+
+  SizedBox productList(List<ProductModel> productList) {
+    return SizedBox(
+      height: 190,
       child: ListView.separated(
-        itemCount: 10,
+        itemCount: productList.length,
         primary: false,
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) {
-          return const CategoryItem();
+        itemBuilder: (context, index) {
+          return ProductCardItem(
+            product: productList[index],
+          );
         },
-        separatorBuilder: (BuildContext context, int index) {
+        separatorBuilder: (_, __) {
           return const SizedBox(
             width: 8,
           );
@@ -76,33 +168,16 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SizedBox get ProductList {
-    return SizedBox(
-      height: 130,
-      child: ListView.separated(
-        itemCount: 10,
-        primary: false,
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) {
-          return const ProductCardItem();
-        },
-        separatorBuilder: (BuildContext context, int index) {
-          return const SizedBox(
-            width: 8,
-          );
-        },
-      ),
-    );
-  }
-
-  TextFormField get SearchTextField {
+  TextFormField get searchTextField {
     return TextFormField(
       decoration: InputDecoration(
         hintText: 'Search',
         filled: true,
         fillColor: Colors.grey.shade200,
-        prefixIcon: const Icon(Icons.search),
+        prefixIcon: const Icon(
+          Icons.search,
+          color: Colors.grey,
+        ),
         border: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(8)),
@@ -118,99 +193,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   AppBar get appBar {
     return AppBar(
-      title: Image.asset(AssetPath.logoNav),
+      title: Image.asset(AssetsPath.logoNav),
       actions: [
         CircleIconButton(
-          onTap: () {},
+          onTap: () async {
+            await AuthController.clearAuthData();
+            Get.offAll(() => const VerifyEmailScreen());
+          },
           iconData: Icons.person,
         ),
+        const SizedBox(width: 8,),
         CircleIconButton(
           onTap: () {},
           iconData: Icons.call,
         ),
+        const SizedBox(width: 8,),
         CircleIconButton(
           onTap: () {},
           iconData: Icons.notifications_active_outlined,
         ),
       ],
-    );
-  }
-}
-
-class ProductCardItem extends StatelessWidget {
-  const ProductCardItem({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 190,
-      width: 160,
-      child: Card(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
-              ),
-              child: Image.asset(
-                AssetPath.dummyShoeImageJpg,
-                width: 80,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Nike shoe 120h',
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey)),
-                  Row(
-                    children: [
-                      const Text(
-                        '\$120',
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Wrap(
-                        children: const [
-                          Icon(Icons.star),
-                          Text(
-                            '4.4',
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black45),
-                          )
-                        ],
-                      ),
-                      Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4)),
-                        color: AppColors.primaryColor,
-                        child: const Icon(
-                          Icons.favorite_outline_rounded,
-                          size: 12,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

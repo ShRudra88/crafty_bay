@@ -1,7 +1,11 @@
-import 'package:crafty_bay/app.dart';
 import 'package:flutter/material.dart';
 
-void main()
-{
+import 'app.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const CraftyBay());
 }
+///TASKSSSSS
+/// Review Screen, Add Reveiew
+/// Do the Counter Buttons Manually
