@@ -1,6 +1,3 @@
-
-import 'package:get/get.dart';
-
 import '../../data/services/network_caller.dart';
 import '../../data/utility/urls.dart';
 

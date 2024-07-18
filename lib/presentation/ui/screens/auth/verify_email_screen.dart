@@ -1,8 +1,6 @@
-import 'package:e_commerce_flutter_crafty_bay/presentation/ui/screens/auth/verify_otp_screen.dart';
-import 'package:e_commerce_flutter_crafty_bay/presentation/ui/widget/app_logo.dart';
+import 'package:crafty_bay/presentation/ui/screens/auth/verify_otp_screen.dart';
+import 'package:crafty_bay/presentation/ui/widget/app_logo.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../../state_holders/send_email_otp_contoller.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
@@ -89,8 +87,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                             } else {
                               Get.showSnackbar(GetSnackBar(
                                 title: 'Send OTP failed',
-                                message: controller?.errorMessage,
-                                duration: Duration(seconds: 2),
+                                message: controller.errorMessage,
+                                duration: const Duration(seconds: 2),
                                 isDismissible: true,
                               ));
                             }

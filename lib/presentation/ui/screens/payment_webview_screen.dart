@@ -34,7 +34,7 @@ class _PaymentWebViewScreenState extends State<PaymentWebViewScreen> {
           },
         ),
       )
-      ..loadRequest(Uri.parse(widget.url));
+      ..loadRequest(Uri.parse(widget.url) as WebViewRequest);
   }
 
   @override

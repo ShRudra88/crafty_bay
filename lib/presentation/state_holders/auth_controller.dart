@@ -1,9 +1,5 @@
-
-
 import 'dart:convert';
-
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/models/profile_data.dart';
 import '../ui/screens/auth/verify_email_screen.dart';

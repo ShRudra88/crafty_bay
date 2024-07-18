@@ -1,5 +1,5 @@
-import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/product_controller.dart';
-import 'package:e_commerce_flutter_crafty_bay/presentation/ui/widget/center_circular_progress_indicator.dart';
+import 'package:crafty_bay/presentation/state_holders/product_controller.dart';
+import 'package:crafty_bay/presentation/ui/widget/center_circular_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../../state_holders/main_bottom_nav_contoller.dart';

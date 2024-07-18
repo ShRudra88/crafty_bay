@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
-import '../../presentation/state_holders/auth_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/auth_controller.dart';
+
 import '../models/response_data.dart';
 
 class NetworkCaller {

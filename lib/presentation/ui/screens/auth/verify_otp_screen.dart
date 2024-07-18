@@ -1,12 +1,9 @@
 import 'dart:async';
 
-import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/main_bottom_nav_contoller.dart';
-import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/send_email_otp_contoller.dart';
-import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/verify_otp_controller.dart';
-import 'package:e_commerce_flutter_crafty_bay/presentation/ui/screens/main_bottom_nav_screen.dart';
-import 'package:e_commerce_flutter_crafty_bay/presentation/ui/widget/app_logo.dart';
+import 'package:crafty_bay/presentation/state_holders/verify_otp_controller.dart';
+import 'package:crafty_bay/presentation/ui/screens/main_bottom_nav_screen.dart';
+import 'package:crafty_bay/presentation/ui/widget/app_logo.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../utility/app_colors.dart';
 import '../../widget/center_circular_progress_indicator.dart';

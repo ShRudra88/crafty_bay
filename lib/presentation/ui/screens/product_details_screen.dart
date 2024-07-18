@@ -1,20 +1,17 @@
-import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/add_to_cart_controller.dart';
+
+
+
+import 'package:crafty_bay/data/models/product_details_data.dart';
+import 'package:crafty_bay/presentation/state_holders/add_to_cart_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/auth_controller.dart';
+import 'package:crafty_bay/presentation/state_holders/product_details_controller.dart';
+import 'package:crafty_bay/presentation/ui/screens/auth/verify_email_screen.dart';
+import 'package:crafty_bay/presentation/ui/utility/app_colors.dart';
+import 'package:crafty_bay/presentation/ui/widget/center_circular_progress_indicator.dart';
+import 'package:crafty_bay/presentation/ui/widget/product_details/color_selector.dart';
+import 'package:crafty_bay/presentation/ui/widget/product_details/product_image_carousel.dart';
+import 'package:crafty_bay/presentation/ui/widget/product_details/size_selector.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:item_count_number_button/item_count_number_button.dart';
-
-import '../../../data/models/product_details_data.dart';
-import '../../state_holders/cart_list_controller.dart';
-import '../../state_holders/auth_controller.dart';
-import '../../state_holders/product_details_controller.dart';
-import '../utility/app_colors.dart';
-import '../widget/center_circular_progress_indicator.dart';
-import '../widget/product_details/color_selector.dart';
-import '../widget/product_details/product_image_carousel.dart';
-import '../widget/product_details/size_selector.dart';
-import 'auth/verify_email_screen.dart';
-
-
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key, required this.productId});
@@ -339,16 +336,4 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return 'Grey';
   }
 
-// Color getColorFromString(String colorCode) {
-//   String code = colorCode.replaceAll('#', '');
-//   String hexCode = 'FF$code';
-//   return Color(int.parse('0x$hexCode'));
-// }
-//
-// String colorToHashColorCode(String colorCode) {
-//   return colorCode.toString()
-//       .replaceAll('0xff', '#')
-//       .replaceAll('Color(', '')
-//       .replaceAll(')', '');
-// }
 }

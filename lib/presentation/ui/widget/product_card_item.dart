@@ -1,5 +1,5 @@
-
-
+import 'package:crafty_bay/data/models/product_model.dart';
+import 'package:crafty_bay/presentation/ui/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProductCardItem extends StatelessWidget {
@@ -46,7 +46,7 @@ class ProductCardItem extends StatelessWidget {
                     children: [
                       Text(
                         product.title ?? '',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.black54,
@@ -70,14 +70,14 @@ class ProductCardItem extends StatelessWidget {
                            Wrap(
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star_border,
                                 size: 14,
                                 color: Colors.orangeAccent,
                               ),
                               Text(
                                 '${product.star ?? 0}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.black45),
