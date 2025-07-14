@@ -1,4 +1,4 @@
-import 'package:crafty_bay/models/product_model.dart';
+import 'package:e_commerce_flutter_crafty_bay/models/product_model.dart';
 
 class ProductListModel {
   String ? msg;

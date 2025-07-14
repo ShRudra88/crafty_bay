@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../models/profile_data.dart';
 import '../ui/screens/auth/varify_email_screen.dart';
 
 class AuthController extends GetxController {

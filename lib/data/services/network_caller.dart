@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import '../../models/response_data.dart';
+import '../../presentation/state_holders/auth_controller.dart';
 
 
 class NetworkCaller {

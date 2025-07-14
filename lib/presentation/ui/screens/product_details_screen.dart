@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../state_holders/auth_controller.dart';
+import '../widgets/product_details/product_image_carousel.dart';
 
 
 

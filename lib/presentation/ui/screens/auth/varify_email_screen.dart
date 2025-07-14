@@ -1,4 +1,4 @@
-import 'package:crafty_bay/presentation/ui/screens/auth/varify_otp_screen.dart';
+import 'package:e_commerce_flutter_crafty_bay/presentation/ui/screens/auth/varify_otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
