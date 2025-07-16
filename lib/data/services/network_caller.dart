@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:e_commerce_flutter_crafty_bay/presentation/state_holders/auth_controller.dart';
+import 'package:http/http.dart';
 
 import '../../models/response_data.dart';
-import '../../presentation/state_holders/auth_controller.dart';
 
 
 class NetworkCaller {

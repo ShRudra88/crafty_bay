@@ -1,7 +1,5 @@
-import 'package:crafty_bay/presentation/ui/utility/app_colors.dart';
-import 'package:crafty_bay/presentation/ui/utility/assets_path.dart';
-import 'package:crafty_bay/presentation/ui/widgets/category_item.dart';
 import 'package:flutter/material.dart';
+import '../widgets/category_item.dart';
 import '../widgets/home/bannar_carousel.dart';
 import '../widgets/home/circle_icon_button.dart';
 import '../widgets/home/section_title_widget.dart';

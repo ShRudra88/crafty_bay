@@ -1,6 +1,7 @@
-import 'package:crafty_bay/presentation/ui/utility/app_colors.dart';
-import 'package:crafty_bay/presentation/ui/utility/assets_path.dart';
 import 'package:flutter/material.dart';
+
+import '../utility/app_colors.dart';
+import '../utility/assets_path.dart';
 
 class ProductCardItem extends StatelessWidget {
   const ProductCardItem({
@@ -46,8 +47,8 @@ class ProductCardItem extends StatelessWidget {
                             color: AppColors.primaryColor,
                             fontWeight: FontWeight.w600),
                       ),
-                      Wrap(
-                        children: const [
+                      const Wrap(
+                        children: [
                           Icon(Icons.star),
                           Text(
                             '4.4',

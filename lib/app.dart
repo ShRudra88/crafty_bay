@@ -13,8 +13,8 @@ class CraftyBay extends StatelessWidget {
     return GetMaterialApp(
       theme: AppThemeData.lightThemeData,
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
-      initialBinding: ControllerBinder(),
+      //home: const SplashScreen(),
+      //initialBinding: ControllerBinder(),
     );
   }
 }
