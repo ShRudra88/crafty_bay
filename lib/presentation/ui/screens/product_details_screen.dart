@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../models/product_details_data.dart';
+import '../../state_holders/add_to_card_controller.dart';
 import '../../state_holders/auth_controller.dart';
+import '../../state_holders/product_details_controller.dart';
+import '../utility/app_colors.dart';
+import '../widgets/center_circular_progress_indicator.dart';
+import '../widgets/product_details/color_selector.dart';
 import '../widgets/product_details/product_image_carousel.dart';
+import '../widgets/product_details/size_selector.dart';
+import 'auth/varify_email_screen.dart';
 
 
 
@@ -280,7 +288,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             } else {
                               Get.showSnackbar(GetSnackBar(
                                 title: 'Add to cart failed',
-                                message: addToCartController.errorMessage,
+                                message: addToCartController?.errorMessage,
                                 duration: const Duration(seconds: 2),
                               ));
                             }

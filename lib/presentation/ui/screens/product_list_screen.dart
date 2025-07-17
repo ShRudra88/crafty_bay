@@ -21,10 +21,10 @@ class _ProductListScreenState extends State<ProductListScreen> {
         title: Text(widget.category ?? 'Products'),
       ),
       body : Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: GetBuilder<ProductController>(builder: (productController){
           return Visibility(
-            visible: productController.inProgress == false;
+            visible: productController.inProgress == false, child: null,;
             replacement: CenterCircularProgressIndicator(),
           )
         }),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import '../utility/app_colors.dart';
+import '../utility/assets_path.dart';
 import '../widgets/category_item.dart';
 import '../widgets/home/bannar_carousel.dart';
 import '../widgets/home/circle_icon_button.dart';
-import '../widgets/home/section_title_widget.dart';
+import '../widgets/home/section_title.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -179,8 +181,8 @@ class ProductCardItem extends StatelessWidget {
                             color: AppColors.primaryColor,
                             fontWeight: FontWeight.w600),
                       ),
-                      Wrap(
-                        children: const [
+                      const Wrap(
+                        children: [
                           Icon(Icons.star),
                           Text(
                             '4.4',

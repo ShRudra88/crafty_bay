@@ -1,9 +1,9 @@
-import 'package:crafty_bay/presentation/ui/screens/carts_screen.dart';
-import 'package:crafty_bay/presentation/ui/screens/category_screen.dart';
-import 'package:crafty_bay/presentation/ui/screens/home_screen.dart';
-import 'package:crafty_bay/presentation/ui/screens/wish_list_screen.dart';
-import 'package:crafty_bay/presentation/ui/utility/app_colors.dart';
 import 'package:flutter/material.dart';
+import '../utility/app_colors.dart';
+import 'carts_list_screen.dart';
+import 'category_screen.dart';
+import 'home_screen.dart';
+import 'wish_list_screen.dart';
 
 class MainBottomNavScreen extends StatefulWidget {
   const MainBottomNavScreen({super.key});

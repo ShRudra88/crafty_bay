@@ -18,13 +18,23 @@ class ProductListModel {
       }
   }
 
-  Map<String , dynamic> toJson(){
+  // Map<String , dynamic> toJson(){
+  //   final Map<String, dynamic> data = <String, dynamic>{};
+  //   data['msg']=msg;
+  //
+  //   if(productList!=null)
+  //     {
+  //       data['data']=productList!.map((v) => v.toJson()).toList();
+  //     }
+  // }
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['msg']=msg;
+    data['msg'] = msg;
 
-    if(productList!=null)
-      {
-        data['data']=productList!.map((v) => v.toJson()).toList();
-      }
+    if (productList != null) {
+
+      data['data'] = productList!.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }

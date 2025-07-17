@@ -1,5 +1,4 @@
-
-import 'package:e_commerce_flutter_crafty_bay/data/models/payment_method.dart';
+import 'package:e_commerce_flutter_crafty_bay/models/payment_method.dart';
 
 class PaymentMethodWrapper {
   List<PaymentMethod>? paymentMethodList;

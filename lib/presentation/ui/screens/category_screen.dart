@@ -1,8 +1,9 @@
-import 'package:crafty_bay/presentation/ui/widgets/category_item.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; // Import GetX package
+import 'package:get/get.dart';
+import '../widgets/category_item.dart';
 import 'home_screen.dart';
-import 'main_bottom_nav_screen.dart'; // Import your HomeScreen if it's in a separate file
+import 'main_bottom_nav_screen.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({Key? key}) : super(key: key);

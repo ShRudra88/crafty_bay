@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class MainBottomController extends GetxController{
+class MainBottomNavController extends GetxController{
   int _selectedIndex = 0;
 
   int get currentIndex => _selectedIndex;
